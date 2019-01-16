@@ -1,0 +1,24 @@
+{
+    "name": "area_clientes_yeboyebo",
+    "modifications": {
+        "addFile": [],
+        "patchScript": [],
+        "replaceFile": [
+            {
+                "name": "dependencias.json",
+                "path": "config/"
+            }
+        ],
+        "patchJson": [
+            {
+                "name": "urls.json",
+                "path": "config/"
+            },
+            {
+                "name": "registros.json",
+                "path": "config/"
+            }
+        ],
+        "deleteFile": []
+    }
+}
