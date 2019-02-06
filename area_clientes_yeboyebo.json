@@ -1,8 +1,38 @@
 {
     "name": "area_clientes_yeboyebo",
     "modifications": {
-        "addFile": [],
-        "patchScript": [],
+        "addFile": [
+            {
+                "name": "model_flcliarea__ac_usuarios.py",
+                "path": "models/flcliarea/"
+            },
+            {
+                "name": "model_flcliarea__ac_usuarios_def.py",
+                "path": "models/flcliarea/"
+            },
+            {
+                "name": "model_flcliarea__models.py",
+                "path": "models/flcliarea/"
+            },
+            {
+                "name": "app_areaclientes__menu_areaclientes.json",
+                "path": "apps/areaclientes/templates/areaclientes/"
+            },
+            {
+                "name": "app_areaclientes__views_areaclientes.py",
+                "path": "apps/areaclientes/viewset/"
+            },
+            {
+                "name": "app_areaclientes__masterac_usuarios.json",
+                "path": "apps/areaclientes/templates/areaclientes/plantillas/"
+            }
+        ],
+        "patchScript": [
+            {
+                "name": "app_portal__views_portal.py",
+                "path": "apps/portal/viewset/"
+            }
+        ],
         "replaceFile": [
             {
                 "name": "dependencias.json",
@@ -17,6 +47,10 @@
             {
                 "name": "registros.json",
                 "path": "config/"
+            },
+            {
+                "name": "app_portal__menu_portal.json",
+                "path": "apps/portal/templates/portal/"
             }
         ],
         "deleteFile": []

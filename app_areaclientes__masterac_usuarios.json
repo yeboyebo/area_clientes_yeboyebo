@@ -1,0 +1,30 @@
+{
+    "querystring": {
+        "p_l": 50,
+        "p_c": true
+    },
+    "schema": {},
+    "layout": {
+        "masterUsuarios": {
+            "componente": "YBList",
+            "prefix": "ac_usuarios",
+            "filter": "buscador",
+            "multiselectable": true,
+            "columns": [
+                {"tipo": "field", "listpos": "subtitle", "key": "nombre", "width": 50, "avatar": true}
+            ],
+            "rowclick": "link"
+        },
+        "newRecordProyectos": {
+            "componente": "YBNewRecord",
+            "class": "info",
+            "icon": "add"
+        }
+    },
+    "acciones": {
+        "delete": {
+            "action": "deleteRow",
+            "icon": "delete"
+        }
+    }
+}

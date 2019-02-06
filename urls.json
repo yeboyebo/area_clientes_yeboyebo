@@ -1,3 +1,56 @@
 {
-    "modifications": []
+    "modifications": [
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/root",
+            "value": {
+                "authentication": {
+                    "url": "^login/$",
+                    "func": "auth_login"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal/authentication",
+            "value": {
+                "account": {
+                    "url": "^account/$",
+                    "func": "account_request"
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/portal",
+            "value": {
+                "areaclientes": {
+                    "doc": {
+                        "url": "doc/$",
+                        "func": "cargadoc"
+                    }
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/models/root",
+            "value": {
+                "flsisppal": {
+                    "auth_group": null,
+                    "auth_user": null,
+                    "sis_gridfilter": null
+                }
+            }
+        },
+        {
+            "type": "insertAfterNode",
+            "path": "/models/flsisppal",
+            "value": {
+                "flcliarea": {
+                    "ac_usuarios": null
+                }
+            }
+        }
+    ]
 }

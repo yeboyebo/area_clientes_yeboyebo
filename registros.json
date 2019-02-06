@@ -1,3 +1,13 @@
 {
-    "modifications": []
+    "modifications": [
+        {
+            "type": "insertAfterNode",
+            "path": "/root",
+            "value": {
+                "flcliarea": {
+                    "ac_usuarios": null
+                }
+            }
+        }
+    ]
 }

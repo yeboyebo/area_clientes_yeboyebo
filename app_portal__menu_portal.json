@@ -1,0 +1,14 @@
+{
+    "modifications": [
+        {
+            "type": "insertAfterItem",
+            "path": "/items[root]",
+            "value": {
+                "NAME": "areaclientes",
+                "TEXT": "AREA CLIENTES",
+                "URL": "areaclientes",
+                "ICON": "insert_chart"
+            }
+        }
+    ]
+}
