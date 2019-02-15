@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!--html ng-app="App"  manifest="appcache.manifest"-->
+<html ng-app="App" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!-- jQuery -->
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <title>Offline</title>
+        <link rel="stylesheet" href="{%static 'documentacion/jsenar/_static/css/theme.css' %}" type="text/css" />
+    </head>
+
+    <body>
+        <div id="content"></div>
+        <script>
+            var test_times  = {};
+            var test_page   = "/static/documentacion/{{ cliente }}/{{ nuevaUrl }}";
+            var content_div = document.getElementById('content');
+
+           function test_()
+           {
+               var xmlHttp = new XMLHttpRequest();
+
+               xmlHttp.onreadystatechange = function() {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                    {
+                       content_div.innerHTML = xmlHttp.responseText;
+                    }
+                };
+
+                start = new Date().getTime();
+
+                xmlHttp.open("GET", test_page, true);
+                xmlHttp.send(null);
+            }
+
+            test_();
+        </script>
+    </body>
+</html>

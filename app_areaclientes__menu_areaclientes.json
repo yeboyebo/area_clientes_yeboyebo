@@ -1,3 +1,12 @@
 {
-    "items": []
+    "items": [
+            {
+            "NAME": "doc",
+            "TEXT": "doc",
+            "URL": "areaclientes/doc/",
+            "ICON": "widgets",
+            "COLOR": "rgb(7, 180, 7)"
+        }
+
+    ]
 }

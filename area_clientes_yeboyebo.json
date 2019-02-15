@@ -25,6 +25,14 @@
             {
                 "name": "app_areaclientes__masterac_usuarios.json",
                 "path": "apps/areaclientes/templates/areaclientes/plantillas/"
+            },
+            {
+                "name": "app_areaclientes__index.html",
+                "path": "apps/areaclientes/templates/areaclientes/"
+            },
+            {
+                "name": "app_areaclientes__page.html",
+                "path": "apps/areaclientes/templates/areaclientes/"
             }
         ],
         "patchScript": [
