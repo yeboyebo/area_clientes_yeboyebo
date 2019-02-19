@@ -11,9 +11,35 @@
     </head>
 
     <body>
-        <div id="content"></div>
+        <!--div id="content"></div-->
+        <!--iframe style="position: absolute; height: 100%; width: 100%; border: none" src="/static/documentacion/{{ cliente }}/{{ nuevaUrl }}"></iframe-->
+        <object id="mainframe" type="text/html" data="/static/documentacion/{{ cliente }}/{{ nuevaUrl }}" style="position: absolute; height: 100%; width: 100%; border: none"> </object>
         <script>
-            var test_times  = {};
+            function iframeURLChange(iframe, callback) {
+                var unloadHandler = function () {
+                    setTimeout(function () {
+                        callback(iframe.contentWindow.location.href);
+                    }, 0);
+                };
+
+                function attachUnload() {
+                    // Remove the unloadHandler in case it was already attached.
+                    // Otherwise, the change will be dispatched twice.
+                    iframe.contentWindow.removeEventListener("unload", unloadHandler);
+                    iframe.contentWindow.addEventListener("unload", unloadHandler);
+                }
+
+                iframe.addEventListener("load", attachUnload);
+                attachUnload();
+            }
+
+            iframeURLChange(document.getElementById("mainframe"), function (newURL) {
+                //console.log("URL changed:", newURL);
+                var nueva = "areaclientes/doc" + newURL.split("http://127.0.0.1:8000/static/documentacion/elganso")[1]
+                //window.location.href = "/areaclientes/doc" + nueva;
+                history.pushState({}, "doc", nueva);
+            });
+/*            var test_times  = {};
             var test_page   = "/static/documentacion/{{ cliente }}/{{ nuevaUrl }}";
             var content_div = document.getElementById('content');
 
@@ -28,13 +54,11 @@
                     }
                 };
 
-                start = new Date().getTime();
-
                 xmlHttp.open("GET", test_page, true);
                 xmlHttp.send(null);
-            }
+            }*/
 
-            test_();
+            //test_();
         </script>
     </body>
 </html>

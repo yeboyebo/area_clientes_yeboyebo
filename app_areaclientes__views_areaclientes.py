@@ -9,16 +9,14 @@ class interna(qsatype.objetoBase):
     ctx = qsatype.Object()
 
     def areaclientes_cargadoc(self, request):
-        # usuario = qsatype.FLUtil.nameUser()
-        print("pasa por aqui???")
-        return render(request, 'areaclientes/index.html', {"cliente": "jsenar"})
+        usuario = qsatype.FLUtil.nameUser()
+        return render(request, 'areaclientes/index.html', {"cliente": usuario})
 
     def areaclientes_cargadocparam(self, request, match):
-        # usuario = qsatype.FLUtil.nameUser()
-        print(match)
+        usuario = qsatype.FLUtil.nameUser()
         if match.endswith("/"):
             match = match[:len(match) - 1]
-        return render(request, 'areaclientes/page.html', {"cliente": "jsenar", "nuevaUrl": match})
+        return render(request, 'areaclientes/page.html', {"cliente": usuario, "nuevaUrl": match})
 
     def __init__(self, context=None):
         self.ctx = context
