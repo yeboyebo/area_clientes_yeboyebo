@@ -41,8 +41,6 @@
             "path": "/models/root",
             "value": {
                 "flsisppal": {
-                    "auth_group": null,
-                    "auth_user": null,
                     "sis_gridfilter": null
                 }
             }

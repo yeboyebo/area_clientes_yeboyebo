@@ -4,6 +4,10 @@
         {
             "version": "v1.0",
             "key": "baseparche"
+        },
+        {
+            "version": "v1.0",
+            "key": "yblogin"
         }
     ],
     "fun_aq": null
