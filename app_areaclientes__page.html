@@ -1,64 +1,36 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<!--html ng-app="App"  manifest="appcache.manifest"-->
 <html ng-app="App" xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <!-- jQuery -->
         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-        <title>Offline</title>
-        <link rel="stylesheet" href="{%static 'documentacion/jsenar/_static/css/theme.css' %}" type="text/css" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <title>Documentación {{ usuario }}</title>
+        <link rel="stylesheet" href="/static/documentacion/{{ doc_cliente }}/_static/css/theme.css" type="text/css" />
     </head>
 
     <body>
-        <!--div id="content"></div-->
-        <!--iframe style="position: absolute; height: 100%; width: 100%; border: none" src="/static/documentacion/{{ cliente }}/{{ nuevaUrl }}"></iframe-->
-        <object id="mainframe" type="text/html" data="/static/documentacion/{{ cliente }}/{{ nuevaUrl }}" style="position: absolute; height: 100%; width: 100%; border: none"> </object>
+        <object id="mainframe" type="text/html" data="/static/documentacion/{{ doc_cliente }}/{{ nuevaUrl }}" style="position: absolute; height: 100%; width: 100%; border: none"> </object>
         <script>
             function iframeURLChange(iframe, callback) {
                 var unloadHandler = function () {
                     setTimeout(function () {
-                        callback(iframe.contentWindow.location.href);
+                        callback(iframe, iframe.contentWindow.location.pathname);
                     }, 0);
                 };
 
                 function attachUnload() {
-                    // Remove the unloadHandler in case it was already attached.
-                    // Otherwise, the change will be dispatched twice.
                     iframe.contentWindow.removeEventListener("unload", unloadHandler);
                     iframe.contentWindow.addEventListener("unload", unloadHandler);
                 }
 
                 iframe.addEventListener("load", attachUnload);
-                attachUnload();
+                // attachUnload();
             }
 
-            iframeURLChange(document.getElementById("mainframe"), function (newURL) {
-                //console.log("URL changed:", newURL);
-                var nueva = "areaclientes/doc" + newURL.split("http://127.0.0.1:8000/static/documentacion/elganso")[1]
-                //window.location.href = "/areaclientes/doc" + nueva;
-                history.pushState({}, "doc", nueva);
+            iframeURLChange(document.getElementById("mainframe"), function (iframe, newURL) {
+                var nueva = "/areaclientes/doc" + newURL.split("/static/documentacion/{{ doc_cliente }}")[1]
+                history.replaceState({}, "doc", nueva);
             });
-/*            var test_times  = {};
-            var test_page   = "/static/documentacion/{{ cliente }}/{{ nuevaUrl }}";
-            var content_div = document.getElementById('content');
-
-           function test_()
-           {
-               var xmlHttp = new XMLHttpRequest();
-
-               xmlHttp.onreadystatechange = function() {
-                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-                    {
-                       content_div.innerHTML = xmlHttp.responseText;
-                    }
-                };
-
-                xmlHttp.open("GET", test_page, true);
-                xmlHttp.send(null);
-            }*/
-
-            //test_();
         </script>
     </body>
 </html>

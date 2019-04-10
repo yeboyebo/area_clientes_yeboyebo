@@ -8,10 +8,10 @@ from django.contrib.auth import login as login_auth
 from django.contrib.auth.models import User, Group
 import hashlib
 
-from models.flcliarea.ac_usuarios import usuarios
+from models.flcliarea.ac_usuarios import ac_usuarios as usuarios
 
 
-class area_clientes(interna):
+class area_clientes(yblogin):
 
     def area_clientes_login(self, request, error=None):
         """ Peticion defecto"""
@@ -51,7 +51,7 @@ class area_clientes(interna):
                         user.save()
                     except Exception as e:
                         print(e)
-                usuario = usuarios.objects.get(idusuario=username)
+                usuario = usuarios.objects.get(nombre__exact=username)
                 md5passwd = hashlib.md5(password.encode('utf-8')).hexdigest()
                 print("falla por aqui??", usuario.password, md5passwd)
                 if usuario.password != md5passwd:

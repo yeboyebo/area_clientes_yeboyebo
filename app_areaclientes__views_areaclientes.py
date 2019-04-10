@@ -9,14 +9,18 @@ class interna(qsatype.objetoBase):
     ctx = qsatype.Object()
 
     def areaclientes_cargadoc(self, request):
-        usuario = qsatype.FLUtil.nameUser()
-        return render(request, 'areaclientes/index.html', {"cliente": usuario})
+        return self.iface.cargadocparam(request, "index.html")
 
     def areaclientes_cargadocparam(self, request, match):
         usuario = qsatype.FLUtil.nameUser()
+        codfuncional = qsatype.FLUtil.sqlSelect("ac_usuarios", "codfuncional", "nombre = '{}'".format(usuario))
+        if not codfuncional:
+            codfuncional = usuario
+
         if match.endswith("/"):
             match = match[:len(match) - 1]
-        return render(request, 'areaclientes/page.html', {"cliente": usuario, "nuevaUrl": match})
+
+        return render(request, "areaclientes/page.html", {"usuario": usuario, "doc_cliente": codfuncional, "nuevaUrl": match})
 
     def __init__(self, context=None):
         self.ctx = context
